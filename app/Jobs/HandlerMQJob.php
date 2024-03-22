@@ -21,5 +21,6 @@ class HandlerMQJob implements ShouldQueue
     {
         $data = $payload['data'];
         app($this->basePath . $data['action'])->execute($data['payload']);
+//        Illuminate\Support\Facades\Queue::connection('rabbitmq')->laterRaw(0, json_encode(['action' => 'TestHandler', 'payload' => ['test' => 'OK']]), 'test.queue');
     }
 }
